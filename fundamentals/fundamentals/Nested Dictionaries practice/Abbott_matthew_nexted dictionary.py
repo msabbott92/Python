@@ -57,10 +57,9 @@ dojo = {
 'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
 }
 def printInfo(dict):
-    for key in dict.keys():
-        print(len(dict), key)
-        for x in dict.keys():
-            print(val)
+    for key,val in dict.items():
+        print(len(val), key)
+            
 
 
 printInfo(dojo)
