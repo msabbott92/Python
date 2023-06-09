@@ -59,8 +59,8 @@ dojo = {
 def printInfo(dict):
     for key,val in dict.items():
         print(len(val), key)
-            
-
+        for x in range(len(val) - 1):
+            print(val[x])
 
 printInfo(dojo)
 
