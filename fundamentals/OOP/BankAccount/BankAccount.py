@@ -39,6 +39,43 @@ account1 = BankAccount(500, 0.01)
 account2 = BankAccount(100, 0.01)
 
 
-account1.deposit(60).deposit(100).deposit(150).withdraw(400).yield_interest().display_account_info()
-account2.deposit(50).deposit(50).withdraw(20).withdraw(20).withdraw(20).withdraw(50).yield_interest().display_account_info()
+
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.account = BankAccount(0,0.01)
+    
+
+    def make_deposit(self,amount):
+        self.account.deposit(amount)
+        return self
+
+    def make_withdraw(self, amount):
+        self.account.withdraw(amount)
+    
+    def display_user_balance(self):
+        print(self.account.balance)
+
+    def transfer_money(self, amount, name):
+        if self.account.balance - amount > 0:
+            self.account.withdraw(amount)
+            name.account.deposit(amount)
+            
+        
+        
+
+user1 = User("Matt", "matt@email.com")
+user2 = User("Sarah", "sarah@email.com")
+
+user1.make_deposit(100).display_user_balance()
+user2.make_deposit(200).display_user_balance()
+
+
+
+user2.transfer_money(50,user1)
+
+user2.display_user_balance()
+user1.display_user_balance()
 
