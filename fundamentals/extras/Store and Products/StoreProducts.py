@@ -2,6 +2,16 @@ class Store:
     def __init__(self, name, type):
         self.name = name
         self.type = type
+        self.products = Product(name, type, price)
+
+    def add_product(self, newproduct):
+        self.products.append(newproduct)
+        return self
+
+    def sell_product(self,id):
+        self.products.remove(self.products[id])
+        
+        
 
 
 
@@ -17,7 +27,7 @@ class Product:
 
     def updated_price(self, percent_changed, is_increased):
         if is_increased == True:
-            self.price = self.price + (self.price * is_increased)
+            self.price = self.price + (self.price * percent_changed)
             return self
 
 
@@ -27,6 +37,8 @@ product1 = Product("Redington Rod", "Fly Rod", 200)
 product1.printInfo()
 mainStore = Store("Matt's Fly Shop", "Outdoor Retailer")
 
-product1.updated_price(5, True)
+product1.updated_price(0.1, True)
 product1.printInfo()
 
+mainStore.add_product(product1).add_product(product1)
+mainStore.sell_product(0)
