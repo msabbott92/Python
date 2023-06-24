@@ -14,11 +14,12 @@
             display: flex;
             margin-left: 10%;
             margin-right: 10%;
+            flex-wrap: wrap;
         }
         .box{
-            background-color: blue;
             width: 250px;
             height: 250px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -27,9 +28,9 @@
         <h1>Welcome!</h1>
     </div>
     <div class = container>
-        <div class = box></div>
-        <div class = box></div>
-        <div class = box></div>
+        {% for i in range(0,num) %}
+        <div class="box" style="background-color: {{color}};"></div>
+        {% endfor %}
     </div>
 </body>
 </html>
