@@ -6,7 +6,6 @@ app.secret_key="this is my secret"
 def index():
     if "counter" not in session:
         session["counter"] = 0
-
     return render_template('index.html')
 
 @app.route('/countup')
