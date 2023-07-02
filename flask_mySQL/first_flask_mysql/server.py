@@ -23,10 +23,11 @@ def create_friend():
     Friend.save(request.form)
     # Don't forget to redirect after saving to the database.
     return redirect('/')
-@app.route('/friend/show/<int:friend_id>')
-def show(friend_id):
-    friend=Friend.get_one(friend_id)
-    return render_template("show_friend.html", friend=friend)    
+
+@app.route('/friends/update/<int:friend_id>', methods=['POST'])
+def update():
+    Friend.update(request.form)
+    return redirect('/')
 
 if __name__ == "__main__":
     app.run(debug=True)
