@@ -1,4 +1,4 @@
-from mysqlconnection import connectToMySQL
+from config.mysqlconnection import connectToMySQL
 
 class User:
     DB = "users"
@@ -42,4 +42,3 @@ class User:
     def destroy(cls,data):
         query  = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL('users_schema').query_db(query,data)
-
