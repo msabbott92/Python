@@ -12,8 +12,8 @@
                 <p class="fs-3">Add Ninja</p>
             </div>
             <form action="/add_ninja" method="post">
-                <label for="form-select" class="form-label" name="dojo_id">Dojo:</label>
-                <select class="form-select mb-2" aria-label="Default select example">
+                <label for="form-select" class="form-label">Dojo:</label>
+                <select class="form-select mb-2" aria-label="Default select example" name="dojo_id">
                     <option selected>Open this select menu</option>
                         {% for dojo in dojos %}
                         <option value="{{ dojo_id }}">{{ dojo.name }}</option>
