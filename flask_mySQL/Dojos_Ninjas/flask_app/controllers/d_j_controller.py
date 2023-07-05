@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, session
 from flask_app import app
 
-from flask_app.models.d_j_model import Dojo
+from flask_app.models.d_j_model import Dojo, Ninja
 
 @app.route("/dojos")
 def index():
@@ -24,7 +24,22 @@ def show_user(id):
     }
     return render_template("dojos.html", dojo = Dojo.get_one(data))
 
-#You've linked the list of dojos to showing page, now link ninja data to the DB and then have it displayed. 
+@app.route("/ninjas")
+def new_ninja():
+    return render_template("ninja.html", dojos = Dojo.get_all())
+
+@app.route("/add_ninja", methods=["POST"])
+def add_ninja():
+    data = {
+        "dojo_id": request.form["dojo_id"],
+        "first_name": request.form["first_name"],
+        "last_name": request.form["last_name"],
+        "age": request.form["age"],
+    }
+    print(data)
+    
+    return redirect("/dojos")
+
 
 
 
