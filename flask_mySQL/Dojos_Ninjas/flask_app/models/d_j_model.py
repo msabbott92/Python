@@ -62,7 +62,12 @@ class Ninja:
         return result
     
     @classmethod
-    def get_one(cls, data):
-        query = "SELECT * FROM ninjas WHERE id = %(id)s;"
+    def get_fromDojo(cls, data):
+
+        query = "SELECT * FROM ninjas WHERE dojo_id = %(id)s;"
         result = connectToMySQL('dojos_and_ninjas_schema').query_db(query,data)
-        return cls(result[0])
+        print(result)
+        ninjas = []
+        for n in result:
+            ninjas.append(cls(n))
+        return ninjas

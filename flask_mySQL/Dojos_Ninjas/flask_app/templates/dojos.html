@@ -21,11 +21,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        {% for ninja in ninjas %}
+                        <tr>
+                            <td>{{ninja.first_name}}</td>
+                            <td>{{ninja.last_name}}</td>
+                            <td>{{ninja.age}}</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <a href="/dojos">Home</a>
             </div>
         </div>
     </div>

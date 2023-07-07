@@ -22,7 +22,10 @@ def show_user(id):
     data = {
         "id": id
     }
-    return render_template("dojos.html", dojo = Dojo.get_one(data))
+
+    dojo = Dojo.get_one(data)
+    ninjas = Ninja.get_fromDojo(data)
+    return render_template("dojos.html", dojo = dojo, ninjas = ninjas)
 
 @app.route("/ninjas")
 def new_ninja():
@@ -37,7 +40,7 @@ def add_ninja():
         "age": request.form["age"],
     }
     print(data)
-    
+    Ninja.save(data)
     return redirect("/dojos")
 
 
