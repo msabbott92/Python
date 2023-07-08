@@ -18,6 +18,7 @@
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Age</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +27,7 @@
                             <td>{{ninja.first_name}}</td>
                             <td>{{ninja.last_name}}</td>
                             <td>{{ninja.age}}</td>
+                            <td><a href="/edit/{{ninja.id}}">Edit</a> | <a href="/delete/{{ninja.id}}">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

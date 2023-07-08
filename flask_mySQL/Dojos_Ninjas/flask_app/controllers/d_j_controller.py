@@ -43,6 +43,29 @@ def add_ninja():
     Ninja.save(data)
     return redirect("/dojos")
 
+@app.route("/edit/<int:id>")
+def edit(id):
+    data = {
+        "id":id
+    }
+    print(data)
+    return render_template("edit.html",ninja=Ninja.get_one(data),dojos = Dojo.get_all())
+
+@app.route('/update',methods=['POST'])
+def update():
+    print(request.form)
+    Ninja.update(request.form)
+    
+    return redirect('/dojos')
+
+@app.route('/delete/<int:id>') 
+def destroy(id):
+    data = {
+        "id": id
+    }
+    Ninja.destroy(data)
+    return redirect('/dojos')
+
 
 
 

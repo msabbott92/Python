@@ -22,7 +22,7 @@ def show_dojo(id):
     data = {
         "id": id
     }
-    return render_template("user.html", user=Dojo.get_one(data))
+    return render_template("user.html", user=User.get_one(data))
 
 @app.route("/edit/<int:id>")
 def edit(id):
