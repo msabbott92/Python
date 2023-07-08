@@ -1,6 +1,6 @@
+from flask import render_template, request, redirect, session, flash
 from flask_app import app
-from flask import Flask, render_template, request, redirect, session
-from models.user import User
+from flask_app.models.user import User
 
 
 @app.route("/")
@@ -13,6 +13,8 @@ def new_user():
 
 @app.route('/create_user', methods=["POST"])
 def new_create():
+    if not User.validate_user(request.form):
+        return redirect("/create")
     print(request.form)
     User.save(request.form)
     return redirect("/")
