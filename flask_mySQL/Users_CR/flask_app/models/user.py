@@ -63,6 +63,12 @@ class User:
             flash("Invalid email address!")
             is_valid = False
         return is_valid
+    
+    @classmethod
+    def save(cls,data):
+        query = "INSERT INTO users (username, password) VALUES (%(username)s, %(password)s);"
+        return connectToMySQL("mydb").mysql.query_db(query, data)
+
 
 #FOR FUTURE REFERENCE
         # # SENSEI way using a for loop (Good for if there are many fields)
