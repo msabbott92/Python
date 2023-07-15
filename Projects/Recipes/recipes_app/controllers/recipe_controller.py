@@ -22,10 +22,6 @@ def create_new_recipe():
     Recipe.save(data)
     return redirect('/recipes')
 
-@app.route("/view-recipe")
-def view_recipe():
-    return render_template("view_recipe.html")
-
 @app.route("/recipes/new")
 def new_recipe():
     if 'user_id' not in session:
@@ -64,6 +60,24 @@ def update_recipe(id):
     }
     Recipe.update_recipe(data)
     return redirect("/recipes")
+
+@app.route("/recipes/<int:id>")
+def view_recipe(id):
+    if 'user_id' not in session:
+        return redirect("/recipes")
+    data = {
+        "id": session["user_id"]
+    }
+    return render_template("view_recipe.html", user = User.get_one_by_id(data), recipe = Recipe.get_recipe_by_id({"id":id}))
+
+@app.route("/recipe/delete/<int:id>")
+def delete_recipe(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    Recipe.delete_recipe({'id':id})
+    return redirect("/recipes")
+
+
 
 
     

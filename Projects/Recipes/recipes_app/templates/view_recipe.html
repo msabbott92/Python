@@ -13,7 +13,7 @@
                 <h1 class="p-4 text-center ">Welcome, {{user.first_name}}</h1>
             </div>
             <div class="col-3 pt-5 justify-content-evenly">
-                <a href="/dojos">+Create</a> | <a href="/">Logout</a>
+                <a href="/recipes">Back to recipes</a> | <a href="/logout">Logout</a>
             </div>
         </div>
         <div class="d-flex justify-content-evenly">
@@ -24,19 +24,24 @@
             <table class="table table-borderless w-50 border border-black">
                 <tr>
                     <th>Description:</th>
-                    <td>{{This is where the desription will goif ther do;}}</td>
+                    <td>{{recipe.description}}</td>
                 </tr>
                 <tr>
                     <th>Under 30 minutes?</th>
-                    <td>{{Yes}}</td>
+                    <td> {% if recipe.under_30 == '1' %} 
+                        Yes 
+                        {% else %} 
+                        No
+                        {% endif %}
+                    </td>
                 </tr>
                 <tr>
                     <th>Instructions:</th>
-                    <td>{{This is where the desription will go}}</td>
+                    <td>{{recipe.instructions}}</td>
                 </tr>
                 <tr>
                     <th>Date Made:</th>
-                    <td>Date goes here</td>
+                    <td>{{recipe.date_made}}</td>
                 </tr>
             </table>
         </div>

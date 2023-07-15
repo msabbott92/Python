@@ -60,6 +60,7 @@ class Recipe:
     
     @classmethod
     def get_recipe_by_id(cls, data):
+        print(data)
         query = "SELECT * FROM recipes JOIN users on recipes.user_id = users.id WHERE recipes.id = %(id)s"
         results = connectToMySQL(cls.db).query_db(query, data)
         return cls(results[0])
@@ -68,4 +69,10 @@ class Recipe:
     def update_recipe(cls, data):
         query = " UPDATE recipes SET name = %(name)s, description = %(description)s, instructions = %(instructions)s, under_30 = %(under_30)s, date_made = %(date_made)s WHERE id = %(id)s"
         return connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
+    def delete_recipe(cls, data):
+        query = "DELETE FROM recipes WHERE id = %(id)s"
+        return connectToMySQL(cls.db).query_db(query, data)
+
     
